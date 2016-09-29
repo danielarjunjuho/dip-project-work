@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="hadooplibs">
+    <CLASSES>
+      <root url="file://$USER_HOME$/hadooplibs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/hadooplibs" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/hadooplibs" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/hadooplibs" recursive="false" type="SOURCES" />
+  </library>
+</component>

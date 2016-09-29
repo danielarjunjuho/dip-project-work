@@ -1,0 +1,20 @@
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+a1.channels.c1.type = file
+a1.channels.c1.capacity = 10000000
+#a1.channels.c1.transactionCapacity = 10000
+
+a1.sources.r1.type = spooldir
+a1.sources.r1.spoolDir = /home/hduser/log-data/
+a1.sources.r1.fileHeader = false
+a1.sources.r1.channels = c1
+
+a1.sinks.k1.type = hdfs
+a1.sinks.k1.hdfs.path = hdfs://localhost:9000/user/hduser/logs
+a1.sinks.k1.hdfs.fileType = DataStream
+a1.sinks.k1.channel = c1
+
+a1.sinks.k1.hdfs.rollSize = 1000000000
+a1.sinks.k1.hdfs.rollCount = 0
