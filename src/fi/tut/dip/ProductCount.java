@@ -26,7 +26,6 @@ public class ProductCount {
 
         private static final String logEntryPattern = "^([\\d.]+) (\\S+) (\\S+) \\[([\\w:\\/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
         private final static IntWritable one = new IntWritable(1);
-        private Text word = new Text();
 
 
         public void map(IntWritable key, Text value, Context context)
@@ -45,7 +44,6 @@ public class ProductCount {
 
     public static class IntSumReducer
             extends Reducer<Text,IntWritable,Text,IntWritable> {
-        //private IntWritable result = new IntWritable();
 
         public void reduce(Text key, Iterable<IntWritable> values, Context context)
                 throws IOException, InterruptedException {
