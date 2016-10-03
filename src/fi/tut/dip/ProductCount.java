@@ -48,7 +48,7 @@ public class ProductCount {
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
 
         if (otherArgs.length < 2) {
-            System.err.println("Usage: wordcount <in> [<in>...] <out>");
+            System.err.println("Usage: ProductCount <in> [<in>...] <out>");
             System.exit(2);
         }
 
