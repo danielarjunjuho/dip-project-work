@@ -29,8 +29,17 @@ public class ProductCount {
         private Text word = new Text();
 
 
-        /*Your Mapper Code here*/
+        public void map(IntWritable key, Text value, Context context)
+                throws IOException, InterruptedException {
+            String txt = value.toString();
 
+            Pattern pattern = Pattern.compile(logEntryPattern);
+            Matcher matcher = pattern.matcher(txt);
+            while (matcher.find()) {
+                //3ICE> group 5 is for example "/department/apparel/category/featured%20shops/product/adidas%20Kids'%20RG%20III%20Mid%20Football%20Cleat"
+                context.write(new Text(matcher.group(5)), one);
+            }
+        }
 
     }
 
