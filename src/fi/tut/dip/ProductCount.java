@@ -24,7 +24,7 @@ public class ProductCount {
     public static class TokenizerMapper
             extends Mapper<Object, Text, Text, IntWritable>{
 
-        private static final String logEntryPattern = "^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
+        private static final String logEntryPattern = "^([\\d.]+) (\\S+) (\\S+) \\[([\\w:\\/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
         private final static IntWritable one = new IntWritable(1);
         private Text word = new Text();
 
