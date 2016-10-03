@@ -45,10 +45,16 @@ public class ProductCount {
 
     public static class IntSumReducer
             extends Reducer<Text,IntWritable,Text,IntWritable> {
-        private IntWritable result = new IntWritable();
+        //private IntWritable result = new IntWritable();
 
-        /*Your Reducer Code here*/
-
+        public void reduce(Text key, Iterable<IntWritable> values, Context context)
+                throws IOException, InterruptedException {
+            int sum = 0;
+            for (IntWritable value : values) {
+                sum = sum + value.get();
+            }
+            context.write(key, new IntWritable(sum));
+        }
     }
 
     public static void main(String[] args) throws Exception {
