@@ -74,7 +74,10 @@ public class ProductCount {
         job.setReducerClass(IntSumReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
-
+        //3ICE: attempt to fix Type mismatch, more work needed
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(IntWritable.class);
+        
         for (int i = 0; i < otherArgs.length - 1; ++i) {
             TextInputFormat.addInputPath(job, new Path(otherArgs[i]));
         }
