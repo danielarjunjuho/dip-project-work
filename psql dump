@@ -172,3 +172,54 @@ COPY categories (category_id, category_department_id, category_name) FROM stdin;
 24 5 Women's Apparel
 25 5 Boys' Apparel
 26 5 Girls' Apparel
+
+
+[...]
+
+
+41 6 Trade-In
+42 7 Bike & Skate Shop
+43 7 Camping & Hiking
+44 7 Hunting & Shooting
+45 7 Fishing
+46 7 Indoor/Outdoor Games
+47 7 Boating
+48 7 Water Sports
+49 8 MLB
+50 8 NFL
+51 8 NHL
+52 8 NBA
+53 8 NCAA
+54 8 MLS
+55 8 International Soccer
+56 8 World Cup Shop
+57 8 MLB Players
+58 8 NFL Players
+59 8 Football Players
+\.
+
+
+--
+-- Data for Name: departments; Type: TABLE DATA; Schema: public; Owner: hduser
+--
+
+COPY departments (department_id, department_name) FROM stdin;
+2 Fitness
+3 Footwear
+4 Apparel
+5 Golf
+6 Outdoors
+7 Fan Shop
+8 Games
+\.
+
+
+--
+-- Data for Name: order_items; Type: TABLE DATA; Schema: public; Owner: hduser
+--
+
+COPY order_items (order_item_id, order_item_order_id, order_item_product_id, order_item_quantity, order_item_subtotal, order_item_product_price) FROM stdin;
+1 1 957 1 299.980011 299.980011
+2 2 1073 1 199.990005 199.990005
+3 2 502 5 250 50
+4 2 403 1 129.990005 129.990005
