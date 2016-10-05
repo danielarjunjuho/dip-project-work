@@ -223,3 +223,15 @@ COPY order_items (order_item_id, order_item_order_id, order_item_product_id, ord
 2 2 1073 1 199.990005 199.990005
 3 2 502 5 250 50
 4 2 403 1 129.990005 129.990005
+
+
+[...]
+
+
+[...]
+
+
+Rangers Russell 69.9700012 http://images.acmesports.sports/Majestic+Men%27s+Replica+Texas+Rangers+Russell+Wilson+%233+Home...
+1341 59 Nike Women's Cleveland Browns Johnny Football 34 http://images.acmesports.sports/Nike+Women%27s+Cleveland+Browns+Johnny+Football+Orange+T-Shirt
+1342 59 Nike Men's St. Louis Rams Michael Sam #96 Nam 32 http://images.acmesports.sports/Nike+Men%27s+St.+Louis+Rams+Michael+Sam+%2396+Name+and+Number...
+1343 59 Nike Men's Home Game Jersey St. Louis Rams Mi 100 http://images.acmesports.sports/Nike+Men%27s+Home+Game+Jersey+St.+Louis+Rams+Michael+Sam+%2396
