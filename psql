@@ -1,9 +1,0 @@
-Start PostgreSQL CLI
-% psql
-
-Inside the psql shell –create database dip and connect to it:
-hduser=# create database dip;
-hduser=# connect dip;
-
-• Create table for the data in the database dip:
-–hduser=# create table (…);
