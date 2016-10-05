@@ -24,7 +24,7 @@ public class ProductCount {
     public static class TokenizerMapper
             extends Mapper<LongWritable, Text, Text, LongWritable>{
 
-        private static final String logEntryPattern = "^([\\d.]+) (\\S+) (\\S+) \\[([\\w:\\/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
+        private static final String logEntryPattern = "^([\\d.]+) (\\S+) (\\S+) \\[([\\w:\\/]+\\s[+\\-]\\d{4})\\] \"GET /department/(.+?) HTTP/1.1\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
         private final static LongWritable one = new LongWritable(1);
 
 
