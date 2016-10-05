@@ -1,0 +1,11 @@
+sqoop export \
+--connect jdbc:postgresql://localhost/hduser \ 
+--username hduser \
+--password123 \ 
+--table logData \
+--export-dir/output1/* \ 
+--driver org.postgresql.Driver \ 
+--connection-manager org.apache.sqoop.manager.GenericJdbcManager\
+--direct \ 
+--input-fields-terminated-by ’;’ \
+--lines-terminated-by '\n’
