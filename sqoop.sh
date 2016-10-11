@@ -1,11 +1,14 @@
-sqoop export \
---connect jdbc:postgresql://localhost/hduser \ 
+#!/bin/bash
+
+sqoop 'export' \
+--connect jdbc:postgresql://localhost/sales_data \
 --username hduser \
---password123 \ 
---table logData \
---export-dir/output1/* \ 
---driver org.postgresql.Driver \ 
---connection-manager org.apache.sqoop.manager.GenericJdbcManager\
---direct \ 
---input-fields-terminated-by ’;’ \
---lines-terminated-by '\n’
+--password hduser \
+--table browsing \
+--update-key product_name \
+--export-dir 'out2/' \
+--driver org.postgresql.Driver \
+--connection-manager org.apache.sqoop.manager.GenericJdbcManager \
+--direct \
+--input-fields-terminated-by '\t' \
+--lines-terminated-by '\n'

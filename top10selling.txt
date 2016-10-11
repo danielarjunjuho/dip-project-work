@@ -1,0 +1,15 @@
+You are now connected to database "sales_data" as user "hduser".
+                 product_name                  | orders 
+-----------------------------------------------+--------
+ Perfect Fitness Perfect Rip Deck              |  32165
+ Nike Men's Dri-FIT Victory Golf Polo          |  27740
+ O'Brien Men's Neoprene Life Vest              |  25163
+ Nike Men's Free 5.0+ Running Shoe             |  16275
+ Under Armour Girls' Toddler Spine Surge Runni |  13800
+ Nike Men's CJ Elite 2 TD Football Cleat       |   9839
+ Field & Stream Sportsman 16 Gun Fire Safe     |   7556
+ Pelican Sunstream 100 Kayak                   |   6688
+ Diamondback Women's Serene Classic Comfort Bi |   6010
+ ENO Atlas Hammock Straps                      |    476
+(10 rows)
+

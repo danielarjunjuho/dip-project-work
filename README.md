@@ -11,7 +11,14 @@
    - **PRODUCTION**: Compile and then execute with `hadoop jar productcount.jar fi.tut.ProductCount log-data out2`
  * SampleOutput.txt
  * psql
- 
+ * To answer these questions:
+   * start some essential daemons: `sh start-daemons.sh`
+   * Copy log data to HDFS: `./run-flume.sh`
+   * run hadoop job: TODO how do we do this so result is in HDFS
+   * run sqoop job: `./sqoop.sh`
+   * top 10 best selling products: `psql -f top-10-selling-products.sql`
+   * top 10 browsed products: `psql -f top-10-browsed-products.sql`
+   * stop daemons: `sh stop-daemons.sh`
  
 ###Task 3:
 ####What anomaly is there between these two?
@@ -19,7 +26,7 @@
 
 ###Task 4:
 ####What are the most popular browsing hours?
-/ToDo/
+/ToDo/ (need to create another MR-job)
 
 ##Guidelines
 Since the managers of the company don’t use Hadoop but a RDBMS, all the data must be transferred to PostgreSQL. Therefore, the detailed tasks are:

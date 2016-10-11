@@ -13,6 +13,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
+import java.net.URLDecoder;
 import java.util.regex.*;
 import java.io.*;
 import java.nio.charset.Charset;
@@ -35,11 +36,28 @@ public class ProductCount {
             Pattern pattern = Pattern.compile(logEntryPattern);
             Matcher matcher = pattern.matcher(txt);
             while (matcher.find()) {
-                //3ICE> group 5 is for example "GET /department/apparel/category/featured%20shops/product/adidas%20Kids'%20RG%20III%20Mid%20Football%20Cleat HTTP/1.1"
-                context.write(new Text(matcher.group(5)), one);
+                // group 5 is for example "apparel/category/featured%20shops/product/adidas%20Kids'%20RG%20III%20Mid%20Football%20Cleat"
+                // when it's a product. There are also requests ending with .../add_to_cart,
+                // that we should ignore (they add to cart using GET, not really smart but that's not our concern...)
+                String url = matcher.group(5);
+                String[] parts = url.split("/");
+
+                // should be 5 parts, any more and it's add_to_cart, any less and it's a department or category
+                if (parts.length == 5) {
+                    String product = decode(parts[4]);
+                    //String category = decode(parts[2]);
+                    //String department = decode(parts[0]);
+
+                    context.write(new Text(product), one);
+                }
             }
         }
 
+        public static String decode(String s) {
+            try {
+                return URLDecoder.decode(s, "UTF-8");
+            } catch (Throwable t) { return null; }
+        }
     }
 
     public static class IntSumReducer

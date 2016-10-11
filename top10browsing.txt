@@ -1,0 +1,15 @@
+You are now connected to database "sales_data" as user "hduser".
+                 product_name                  | product_count 
+-----------------------------------------------+---------------
+ Perfect Fitness Perfect Rip Deck              |          1926
+ adidas Kids' RG III Mid Football Cleat        |          1793
+ Nike Men's Dri-FIT Victory Golf Polo          |          1780
+ Nike Men's CJ Elite 2 TD Football Cleat       |          1757
+ O'Brien Men's Neoprene Life Vest              |          1509
+ Nike Men's Free 5.0+ Running Shoe             |          1388
+ Pelican Sunstream 100 Kayak                   |          1104
+ Diamondback Women's Serene Classic Comfort Bi |          1059
+ Field & Stream Sportsman 16 Gun Fire Safe     |          1028
+ Under Armour Hustle Storm Medium Duffle Bag   |           939
+(10 rows)
+
