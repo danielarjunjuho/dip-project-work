@@ -26,6 +26,8 @@ The fifth most purchased product is not in the top 10 most browsed (Under Armour
 
 (Initial guess was: Order of magnitude more people are buying a product, than browsing it. How do they buy without browsing? This is not the answer, because the logs are from one day while the purchases are from months of data.)
 
+![Q3](/Q3.png)
+
 ###Task 4:
 ####What are the most popular browsing hours?
 /ToDo/ (need to create another MR-job)
