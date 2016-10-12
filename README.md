@@ -22,7 +22,8 @@
  
 ###Task 3:
 ####What anomaly is there between these two?
-/ToDo/
+First guess: Order of magnitude more people are buying a product, than browsing it. How do they buy without browsing? This is not the answer, because the logs are from one day while the purchases are from months of data.
+Another guess: The fifth most purchased product is not in the top 10 most browsed (Under Armour Girls' Toddler Spine Surge Runni) and the **second** most browsed item (adidas Kids' RG III Mid Football Cleat) is not purchased frequently enough to be in the top ten profitable items.
 
 ###Task 4:
 ####What are the most popular browsing hours?
