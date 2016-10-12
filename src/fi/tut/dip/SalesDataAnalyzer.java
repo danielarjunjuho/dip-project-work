@@ -15,12 +15,9 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 import java.net.URLDecoder;
 import java.util.regex.*;
-import java.io.*;
-import java.nio.charset.Charset;
 
 
-
-public class ProductCount {
+public class SalesDataAnalyzer {
 
     public static class TokenizerMapper
             extends Mapper<LongWritable, Text, Text, LongWritable>{
@@ -60,6 +57,33 @@ public class ProductCount {
         }
     }
 
+
+    public static class HourMapper
+            extends Mapper<LongWritable, Text, Text, LongWritable> {
+
+        private final static LongWritable one = new LongWritable(1);
+
+
+        public void map(LongWritable key, Text value, Context context)
+                throws IOException, InterruptedException {
+            // the values should be line separated already, but lets just make sure we handle multiple lines eithe way
+            String[] lines = value.toString().split("\\n");
+
+            for (String line : lines) {
+                // lines start like:
+                // 9.133.215.123 - - [14/Jun/2014:10:30:13 -0400] ...
+                // we only care
+                String timestamp = line.substring(line.indexOf("["), line.indexOf("]"));
+                String hour = line.split(":")[1];
+
+                context.write(new Text(hour), one);
+            }
+
+            // log lines start at
+        }
+    }
+
+
     public static class IntSumReducer
             extends Reducer<Text,LongWritable,Text,LongWritable> {
 
@@ -78,28 +102,50 @@ public class ProductCount {
         Configuration conf = new Configuration();
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
 
-        if (otherArgs.length < 2) {
-            System.err.println("Usage: ProductCount <in> [<in>...] <out>");
+        if (otherArgs.length < 3) {
+            System.err.println("Usage: SalesDataAnalyzer <in> [<in>...] <out1> <out2>");
             System.exit(2);
         }
 
-        Job job = Job.getInstance(conf, "Product Count");
+        Job productCountJob = Job.getInstance(conf, "Product Count");
+        Job hourJob = Job.getInstance(conf, "Hour Count");
 
-        job.setJarByClass(ProductCount.class);
-        job.setMapperClass(TokenizerMapper.class);
-        job.setReducerClass(IntSumReducer.class);
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(LongWritable.class);
+
+        productCountJob.setJarByClass(SalesDataAnalyzer.class);
+        productCountJob.setMapperClass(TokenizerMapper.class);
+        productCountJob.setReducerClass(IntSumReducer.class);
+        productCountJob.setOutputKeyClass(Text.class);
+        productCountJob.setOutputValueClass(LongWritable.class);
         //3ICE: fix Type mismatch
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(LongWritable.class);
+        productCountJob.setMapOutputKeyClass(Text.class);
+        productCountJob.setMapOutputValueClass(LongWritable.class);
         
-        for (int i = 0; i < otherArgs.length - 1; ++i) {
-            TextInputFormat.addInputPath(job, new Path(otherArgs[i]));
+        for (int i = 0; i < otherArgs.length - 2; ++i) {
+            TextInputFormat.addInputPath(productCountJob, new Path(otherArgs[i]));
         }
 
-        FileOutputFormat.setOutputPath(job,new Path(otherArgs[otherArgs.length - 1]));
+        FileOutputFormat.setOutputPath(productCountJob,new Path(otherArgs[otherArgs.length - 2]));
 
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
+        hourJob.setJarByClass(SalesDataAnalyzer.class);
+        hourJob.setMapperClass(HourMapper.class);
+        hourJob.setReducerClass(IntSumReducer.class);
+        hourJob.setOutputKeyClass(Text.class);
+        hourJob.setOutputValueClass(LongWritable.class);
+        //3ICE: fix Type mismatch
+        hourJob.setMapOutputKeyClass(Text.class);
+        hourJob.setMapOutputValueClass(LongWritable.class);
+
+        for (int i = 0; i < otherArgs.length - 2; ++i) {
+            TextInputFormat.addInputPath(hourJob, new Path(otherArgs[i]));
+        }
+
+        FileOutputFormat.setOutputPath(hourJob, new Path(otherArgs[otherArgs.length - 1]));
+
+
+        System.exit(
+                (productCountJob.waitForCompletion(true) &&
+                hourJob.waitForCompletion(true))
+                ? 0 : 1);
     }
+
 }
