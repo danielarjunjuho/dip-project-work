@@ -1,0 +1,15 @@
+You are now connected to database "sales_data" as user "hduser".
+ hour | amount 
+------+--------
+   21 |  31307
+   20 |  30225
+   22 |  29288
+   23 |  21371
+   19 |  19995
+   18 |  10303
+   11 |   8589
+   17 |   6771
+   12 |   5563
+   10 |   5008
+(10 rows)
+
