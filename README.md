@@ -30,7 +30,30 @@ The fifth most purchased product is not in the top 10 most browsed (Under Armour
 
 ###Task 4:
 ####What are the most popular browsing hours?
-/ToDo/ (need to create another MR-job)
+
+hour | amount 
+
+------+--------
+   
+   21 |  31307
+   
+   20 |  30225
+   
+   22 |  29288
+   
+   23 |  21371
+   
+   19 |  19995
+   
+   18 |  10303
+   
+   11 |   8589
+   
+   17 |   6771
+   
+   12 |   5563
+   
+   10 |   5008
 
 ##Guidelines
 Since the managers of the company don’t use Hadoop but a RDBMS, all the data must be transferred to PostgreSQL. Therefore, the detailed tasks are:
